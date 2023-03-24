@@ -67,19 +67,28 @@ WSGI_APPLICATION = 'webServerJobScrap.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 load_dotenv()
-connection:dict = {
-    'user': os.getenv('user'),
-    'password':os.getenv('password'),
-    'host':os.getenv('host_name')
-}
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'options':'-c search_path=scrap_job,public'
+        },
         'NAME': 'jobscrap',
-        'USER': connection.get('user'),
-        'PASSWORD': connection.get('password'),
-        'HOST': connection.get('host'),
+        'USER': os.getenv('user'),
+        'PASSWORD': os.getenv('password'),
+        'HOST': os.getenv('host_name'),
+        'PORT': '5432',
+    },
+    'scheduler': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'options':'-c search_path=scrap_scheduler,public'
+        },
+        'NAME': 'jobscrap',
+        'USER': os.getenv('user'),
+        'PASSWORD': os.getenv('password'),
+        'HOST': os.getenv('host_name'),
         'PORT': '5432',
     }
 }

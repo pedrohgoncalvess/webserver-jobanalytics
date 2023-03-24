@@ -5,7 +5,24 @@
     <title>Home</title>
 </head>
 <body>
-<h1>Home Job Scrap Analytics</h1>
+<div>
+    <h1>Stats Job Scrap</h1>
+    {% csrf_token %}
+        <div class="infos-scrap">
+            <h2>Jobs no banco de dados</h2>
+            <h3>{{ info }}</h3>
+        </div>
+        <div>
+            <h2>Jobs para serem scrapados</h2>
+            <h3>{{ standby }}</h3>
+        </div>
+    <h1>Jobs por termos pesquisados</h1>
+    <ul>
+        {% for job in jobs %}
+      <li>{{ job.researched_topic }} | {{ job.researched_topic__count }}</li>
+        {% endfor %}
+    </ul>
+</div>
 <a href="{% url 'controller_home'%}">Home controller</a>
 </body>
 </html>
