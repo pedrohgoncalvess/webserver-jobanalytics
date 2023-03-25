@@ -16,12 +16,21 @@
             <h2>Jobs para serem scrapados</h2>
             <h3>{{ standby }}</h3>
         </div>
-    <h1>Jobs por termos pesquisados</h1>
-    <ul>
-        {% for job in jobs %}
-      <li>{{ job.researched_topic }} | {{ job.researched_topic__count }}</li>
-        {% endfor %}
-    </ul>
+    <div>
+        <h1>Jobs por termos pesquisados</h1>
+        <table>
+            <tr>
+                <th>Topico</th>
+                <th>Vagas</th>
+            </tr>
+                {% for job in jobs %}
+            <tr>
+                <td>{{ job.researched_topic }}</td>
+                <td>{{ job.researched_topic__count }}</td>
+            </tr>
+                {% endfor %}
+        </table>
+    </div>
 </div>
 <a href="{% url 'controller_home'%}">Home controller</a>
 </body>
