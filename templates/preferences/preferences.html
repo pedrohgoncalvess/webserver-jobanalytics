@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Preferences</title>
+    <title>Set preferences</title>
 </head>
 <body>
-<h1>Preferences</h1>
+<h1>Set your preferences</h1>
 <h3>Choose your preferences for a better match in vacancies</h3>
 <div class="set-preferences" name="preferences-div">
     <form method="post" action="{% url 'create-preferences' %}">
@@ -35,7 +35,7 @@
         </select>
     <button type="submit" name="button-submit-preferences">Submit preferences</button>
     </form>
-<a href="#"><button>Check preferences</button></a>
+<a href="{% url 'view-preference' %}"><button>Check preferences</button></a>
 </div>
 </body>
 </html>
