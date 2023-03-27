@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Preferences</title>
+</head>
+<body>
+<h1>Preferences</h1>
+<h3>Choose your preferences for a better match in vacancies</h3>
+<div class="set-preferences" name="preferences-div">
+    <form method="post" action="{% url 'create-preferences' %}">
+                {% csrf_token %}
+        <label>Choose a programming language</label>
+        <select name="programming-language">Choose one.
+        <option>Select a language</option>
+        {% for lang in languages %}
+            <option value="{{ lang.tecnologie }}">{{ lang.tecnologie.capitalize }}</option>
+        {% endfor %}
+        </select>
+
+        <label>Choose a framework</label>
+        <select name="framework">
+        <option selected="selected">Select a framework</option>
+        {% for fr in frameworks %}
+            <option value="{{ fr.tecnologie }}">{{ fr.tecnologie.capitalize }}</option>
+        {% endfor %}
+        </select>
+
+        <label>Choose a database</label>
+        <select name="database">Choose one.
+        <option>Select a database</option>
+        {% for db in databases %}
+            <option value="{{ db.tecnologie }}">{{ db.tecnologie.capitalize }}</option>
+        {% endfor %}
+        </select>
+    <button type="submit" name="button-submit-preferences">Submit preferences</button>
+    </form>
+<a href="#"><button>Check preferences</button></a>
+</div>
+</body>
+</html>

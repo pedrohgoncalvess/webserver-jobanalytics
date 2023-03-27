@@ -90,6 +90,28 @@ DATABASES = {
         'PASSWORD': os.getenv('password'),
         'HOST': os.getenv('host_name'),
         'PORT': '5432',
+    },
+    'datasets': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'options': '-c search_path=dataset_schema,public'
+        },
+        'NAME': 'jobscrap',
+        'USER': os.getenv('user'),
+        'PASSWORD': os.getenv('password'),
+        'HOST': os.getenv('host_name'),
+        'PORT': '5432',
+    },
+    'webserver': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'options': '-c search_path=web_server,public'
+        },
+        'NAME': 'jobscrap',
+        'USER': os.getenv('user'),
+        'PASSWORD': os.getenv('password'),
+        'HOST': os.getenv('host_name'),
+        'PORT': '5432',
     }
 }
 

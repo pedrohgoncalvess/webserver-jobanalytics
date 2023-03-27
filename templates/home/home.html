@@ -14,7 +14,10 @@
         </div>
         <div>
             <h2>Jobs para serem scrapados</h2>
-            <h3>{{ standby }}</h3>
+            {% for site in standby %}
+                <h3>{{ site.site }}</h3>
+                <h3>{{ site.site__count }}</h3>
+            {% endfor %}
         </div>
     <div>
         <h1>Jobs por termos pesquisados</h1>
