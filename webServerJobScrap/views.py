@@ -8,8 +8,17 @@ def home(request):
     jobs = len(Job.objects.all())
 
     jobsStandby = (JobStandby.objects.filter(status='waiting').values("site").annotate(Count("site")).order_by())
+    jobsScrapedTerms = (Job.objects.values("researched_topic").annotate(Count("researched_topic")).order_by("-researched_topic__count"))
 
-    jobsScrapedTerms = (Job.objects.values("researched_topic").annotate(Count("researched_topic")).order_by())
+    termList = []
+    countList = []
 
-    context={'info':jobs,'standby':jobsStandby,'jobs':jobsScrapedTerms}
+    for dictTerm in jobsScrapedTerms:
+        if len(termList) < 7:
+            termList.append(dictTerm.get("researched_topic"))
+            countList.append(dictTerm.get("researched_topic__count"))
+
+
+
+    context={'info':jobs,'standby':jobsStandby,'jobs':jobsScrapedTerms,"data":countList,"label":termList}
     return render(request, 'home/home.html',context)

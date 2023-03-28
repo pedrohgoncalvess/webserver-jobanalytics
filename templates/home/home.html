@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'static/home.css' %}">
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
@@ -19,23 +21,41 @@
                 <h3>{{ site.site__count }}</h3>
             {% endfor %}
         </div>
-<a href="{% url 'preferences' %}"><button>Preferences</button></a>
-    <div>
-        <h1>Jobs por termos pesquisados</h1>
-        <table>
-            <tr>
-                <th>Topico</th>
-                <th>Vagas</th>
-            </tr>
-                {% for job in jobs %}
-            <tr>
-                <td>{{ job.researched_topic }}</td>
-                <td>{{ job.researched_topic__count }}</td>
-            </tr>
-                {% endfor %}
-        </table>
-    </div>
-</div>
+<a href="{% url 'create-preferences' %}"><button>Tracking</button></a>
 <a href="{% url 'controller_home'%}">Home controller</a>
+<div class="chart-box">
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+<div class="chart-container">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: {{ label|safe }},
+      datasets: [{
+        label: 'Term used for search',
+        data: {{ data|safe }},
+        borderWidth: 1,
+          backgroundColor: 'rgba(75, 192, 192, 0.5)',
+          hoverBackgroundColor: 'rgba(0, 0, 0, 0.2)'
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+      }
+    }
+  });
+</script>
+</div>
+</div>
+</div>
 </body>
 </html>

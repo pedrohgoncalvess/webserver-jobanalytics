@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <label>Edit your {{ type }}</label>
+        <select name="edit">Choose one.
+        <option>Select a {{ type }}</option>
+        {% for lang in languages %}
+            <option value="{{ lang.tecnologie }}">{{ lang.tecnologie.capitalize }}</option>
+        {% endfor %}
+        </select>
+</body>
+</html>

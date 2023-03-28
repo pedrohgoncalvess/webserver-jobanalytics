@@ -35,7 +35,32 @@
         </select>
     <button type="submit" name="button-submit-preferences">Submit preferences</button>
     </form>
-<a href="{% url 'view-preference' %}"><button>Check preferences</button></a>
+
+<div class="list-preferences">
+<h2>Tecnologies tracking</h2>
+    <div class="languages">
+        <form method="post">
+                <table>
+                    <tr>
+                        <th>Linguagem</th>
+                        <th>Type</th>
+                        <th>Excluir</th>
+                    </tr>
+                    {% for tech in tecnologiesPref %}
+                    <tr>
+                        <td>{{ tech.tecnologie.capitalize }}</td>
+                        <td>{{ tech.type.capitalize }}</td>
+                        <td><a href="delete/{{ tech.id }}">Excluir</a></td>
+                    </tr>
+                {% empty %}
+            <h3>Not found technologies</h3>
+                    {% endfor %}
+                </table>
+        </form>
+    <a href="{% url 'home' %}"><button>Home</button></a>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>

@@ -1,0 +1,10 @@
+.chart-box {
+    width: 1200px;
+    height: 50px;
+    justify-content: center;
+    padding-left: 20%;
+}
+
+h1 {
+    color: red;
+}
