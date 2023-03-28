@@ -7,25 +7,27 @@
 <body>
 <h1>Preferences</h1>
 <div class="list-preferences">
-    <form method="post">
-        <h3>Languages for track</h3>
-            <table>
-                <tr>
-                    <th>Linguagem</th>
-                    <th>Editar</th>
-                    <th>Excluir</th>
-                </tr>
-                {% for lang in languages %}
-                <tr>
-                    <td>{{ lang.tecnologie }}</td>
-                    <td><a href="delete/{{ lang.id }}">Excluir</a></td>
-                    <td>Edit</td>
-                </tr>
-            {% empty %}
-        <h3>Not found language</h3>
-                {% endfor %}
-            </table>
-    </form>
+    <div class="languages">
+        <form method="post">
+            <h3>Languages for track</h3>
+                <table>
+                    <tr>
+                        <th>Linguagem</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
+                    </tr>
+                    {% for lang in languages %}
+                    <tr>
+                        <td>{{ lang.tecnologie }}</td>
+                        <td><a href="edit/{{ lang.id }}">Edit</a></td>
+                        <td><a href="delete/{{ lang.id }}">Excluir</a></td>
+                    </tr>
+                {% empty %}
+            <h3>Not found language</h3>
+                    {% endfor %}
+                </table>
+        </form>
+    </div>
 <a href="{% url 'preferences' %}"><button>Create preferences</button></a>
 </div>
 </body>
