@@ -14,7 +14,7 @@ def home(request):
     countList = []
 
     for dictTerm in jobsScrapedTerms:
-        if len(termList) < 7:
+        if len(termList) < 5:
             termList.append(dictTerm.get("researched_topic"))
             countList.append(dictTerm.get("researched_topic__count"))
 
