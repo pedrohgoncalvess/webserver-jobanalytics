@@ -33,14 +33,19 @@
 <div class="stats">
     <h1>Stats job scrap</h1>
     {% csrf_token %}
-        <div class="infos-scrap">
+        <div class="site-scraped">
             <h2>Scraped jobs</h2>
-            <h3>{{ info }}</h3>
+            {% for inf in info %}
+            <div class="sites-scraped">
+            <h3>{{ inf.site_job.capitalize }}</h3>
+            <h4>{{ inf.site_job__count }}</h4>
+            </div>
+            {% endfor %}
         </div>
-        <div  class="site">
+        <div  class="site-standby">
             <h2>Jobs waiting for scrap</h2>
             {% for site in standby %}
-                <div class="sites">
+                <div class="sites-standby">
                 <h3>{{ site.site.capitalize }}</h3>
                 <h4>{{ site.site__count }}</h4>
                 </div>

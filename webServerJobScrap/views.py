@@ -6,7 +6,7 @@ from controller.models import TecnologiesInfo
 from controller.models import AnalyticDescription
 
 def home(request):
-    jobs = len(Job.objects.all())
+    jobs = (Job.objects.values("site_job").annotate(Count("site_job")).order_by("-site_job__count"))
 
     jobsStandby = (JobStandby.objects.filter(status='waiting').values("site").annotate(Count("site")).order_by())
     jobsScrapedTerms = (Job.objects.values("researched_topic").annotate(Count("researched_topic")).order_by("-researched_topic__count"))

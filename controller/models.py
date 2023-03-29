@@ -51,7 +51,6 @@ class UrlTest(models.Model):
 
 #SCRAP_JOB SCHEMA
 
-
 class Job(models.Model):
     id_job = models.CharField(unique=True, max_length=300, blank=True, null=True)
     vacancy_title = models.CharField(max_length=70, blank=True, null=True)
@@ -61,6 +60,7 @@ class Job(models.Model):
     date_publish = models.CharField(max_length=75, blank=True, null=True)
     scraped_at = models.DateTimeField(blank=True, null=True)
     researched_topic = models.CharField(max_length=50)
+    site_job = models.CharField(max_length=30, null=True)
 
     class Meta:
         managed = False

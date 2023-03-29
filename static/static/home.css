@@ -26,11 +26,17 @@ h1 {
     color: white;
 }
 
-.site {
+.site-standby {
     padding-top: 15px;
 }
 
-.sites {
+.sites-scraped {
+    display: inline-block;
+    padding-top: 15px;
+}
+
+
+.sites-standby {
     display: inline-block;
     padding-top: 15px;
 }
@@ -43,9 +49,10 @@ h1 {
     border-radius: 7px;
     margin: auto;
     margin-top: 50px;
-    height: 200px;
+    height: auto;
     box-shadow: 0 5px rgba(0, 0, 0, 0.4);
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 span {
