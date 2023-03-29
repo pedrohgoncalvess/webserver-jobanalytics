@@ -4,57 +4,141 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'static/home.css' %}">
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,500;1,500;1,800&family=Poppins:wght@400;600;700;900&family=Roboto+Condensed:ital,wght@1,400;1,700&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
     <title>Home</title>
 </head>
 <body>
-<div>
-    <h1>Stats Job Scrap</h1>
+<div class="container-all">
+<div class="menu-suspense">
+<nav>
+    <ul>
+        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i></i>
+        <span class="nav-item">
+        Home
+        </span></a></li>
+        <li><a href="{% url 'home-preferences' %}"><i class="fa-regular fa-pen-to-square"></i>
+        <span class="nav-item">
+        Tracking
+        </span></a></li>
+        <li><a href="{% url 'controller_home' %}"><i class="fa-regular fa-pen-to-square"></i>
+        <span class="nav-item">
+        Controller
+        </span></a></li>
+    </ul>
+</nav>
+</div>
+<div class="stats">
+    <h1>Stats job scrap</h1>
     {% csrf_token %}
         <div class="infos-scrap">
-            <h2>Jobs no banco de dados</h2>
+            <h2>Scraped jobs</h2>
             <h3>{{ info }}</h3>
         </div>
-        <div>
-            <h2>Jobs para serem scrapados</h2>
+        <div  class="site">
+            <h2>Jobs waiting for scrap</h2>
             {% for site in standby %}
-                <h3>{{ site.site }}</h3>
-                <h3>{{ site.site__count }}</h3>
+                <div class="sites">
+                <h3>{{ site.site.capitalize }}</h3>
+                <h4>{{ site.site__count }}</h4>
+                </div>
             {% endfor %}
         </div>
-<a href="{% url 'create-preferences' %}"><button>Tracking</button></a>
-    <a href="{% url 'controller_home'%}"><button>Home controller</button></a>
-<div class="chart-box">
-<div>
-  <canvas id="myChart"></canvas>
 </div>
-<div class="chart-container">
+</div>
+
+<div class="graphics-box">
+<div>
+  <canvas id="languagesChart"></canvas>
+</div>
+<div class="chart-languages-container">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 <script>
-  const ctx = document.getElementById('myChart');
+  const ctx = document.getElementById('languagesChart');
+  console.log(Chart.defaults.scale.ticks);
+  Chart.defaults.scale.ticks.beginAtZero = true;
 
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: {{ label|safe }},
+      labels: {{ labelProg|safe }},
       datasets: [{
-        label: 'Term used for search',
-        data: {{ data|safe }},
+        label: 'Most requested languages',
+        data: {{ dataProg|safe }},
         borderWidth: 1,
-          backgroundColor: 'rgba(75, 192, 192, 0.5)',
+          backgroundColor: 'rgba(0, 0, 255, 0.5)',
           hoverBackgroundColor: 'rgba(0, 0, 0, 0.2)'
       }]
     },
     options: {
       scales: {
-        y: {
+        yAxes: [{
           beginAtZero: true,
-        }
+            ticks:{
+              fontSize:10,
+                fontFamily: "Arial Black",
+                fontColor: "Black"
+            }
+        }],
+        xAxes: [{
+            ticks:{
+              fontSize:9,
+                fontColor: "black",
+                fontFamily:"Arial Black"
+            }
+        }],
       }
     }
   });
 </script>
 </div>
+<div>
+<canvas id="frameworksChart"></canvas>
+</div>
+<div class="chart-framework-container">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+<script>
+  const framework = document.getElementById('frameworksChart');
+  console.log(Chart.defaults.scale.ticks);
+  Chart.defaults.scale.ticks.beginAtZero = true;
+
+  new Chart(framework, {
+    type: 'bar',
+    data: {
+      labels: {{ labelFram|safe }},
+      datasets: [{
+        label: 'Most requested frameworks',
+        data: {{ dataFram|safe }},
+        borderWidth: 1,
+          backgroundColor: 'rgba(82,82,82,0.6)',
+          hoverBackgroundColor: 'rgba(0, 0, 0, 0.2)'
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          beginAtZero: true,
+            ticks:{
+              fontSize:10,
+                fontFamily: "Arial Black",
+                fontColor: "Black"
+            }
+        }],
+        xAxes: [{
+            ticks:{
+              fontSize:9,
+                fontColor: "black",
+                fontFamily:"Arial Black"
+            }
+        }],
+      }
+    }
+  });
+</script>
 </div>
 </div>
 </body>

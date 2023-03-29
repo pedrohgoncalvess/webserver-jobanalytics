@@ -1,10 +1,116 @@
-.chart-box {
-    width: 1200px;
-    height: 50px;
-    justify-content: center;
-    padding-left: 20%;
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "JetBrains Mono Medium";
+}
+
+html{
+        background: linear-gradient(90deg, rgb(250, 250, 250) 0%, rgb(221, 222, 229) 100%);;
+    height: 100%;
+    margin: 0;
+}
+
+
+.graphics-box {
+    width: 30%;
+    margin: auto;
+    padding-top: 50px;
+
 }
 
 h1 {
-    color: red;
+    color: white;
+}
+
+.site {
+    padding-top: 15px;
+}
+
+.sites {
+    display: inline-block;
+    padding-top: 15px;
+}
+
+.stats {
+    width: 25%;
+    text-align: center;
+    background: #666669;
+    font-size: 13px;
+    border-radius: 7px;
+    margin: auto;
+    margin-top: 50px;
+    height: 200px;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.4);
+    padding-top: 10px;
+}
+
+span {
+    margin-bottom: 5px;
+}
+
+nav{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    background-color: #434346;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.5s linear;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+    border-radius: 3px;
+}
+
+a{
+    position: relative;
+    color: white;
+    font-size: 14px;
+    display: table;
+    width: 300px;
+    padding: 15px;
+    margin-bottom: 4px;
+}
+
+.fa{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    font-size: 20px;
+    top: 10px;
+    text-align: center;
+    color: white;
+}
+
+.fa-regular{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    font-size: 20px;
+    top: 10px;
+    text-align: center;
+    color: white;
+}
+
+.nav-item{
+    position: relative;
+    margin-left: 10px;
+    width: 60px;
+    top: 14px;
+}
+
+a:hover{
+    background: #7c7b7b;
+    box-shadow: 0 0 20px #e3e3e3;
+    border-color: transparent;
+}
+
+nav:hover{
+    width: 280px;
+    transition: 0.60s all ease;
+
 }

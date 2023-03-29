@@ -113,6 +113,17 @@ DATABASES = {
         'PASSWORD': os.getenv('password'),
         'HOST': os.getenv('host_name'),
         'PORT': '5432',
+    },
+    'analytic': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'options': '-c search_path=analytics,public'
+        },
+        'NAME': 'jobscrap',
+        'USER': os.getenv('user'),
+        'PASSWORD': os.getenv('password'),
+        'HOST': os.getenv('host_name'),
+        'PORT': '5432',
     }
 }
 

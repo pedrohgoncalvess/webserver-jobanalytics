@@ -116,3 +116,16 @@ class TopicSearch(models.Model):
     class Meta:
         managed = False
         db_table = 'topic_search'
+
+
+#ANALYTICS
+
+class AnalyticDescription(models.Model):
+    id_job = models.IntegerField(blank=True, null=True)
+    info = models.CharField(max_length=100)
+    type = models.CharField(max_length=50)
+    compost_key = models.CharField(unique=True, max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'analytic_description'
